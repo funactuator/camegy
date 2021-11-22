@@ -1,0 +1,117 @@
+
+*{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.video-container{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+video{
+  width: 100%;
+  height: 100%;
+}
+
+.filter-container{
+  position: absolute;
+  width: 10rem;
+  height: 20rem;
+  top: calc((100vh - 20rem)/2);
+  left: 5rem;
+  background-color: aquamarine;
+  border-radius: 3px;
+}
+
+.action-btns-container {
+  position: absolute;
+  width: 5rem;
+  height: 12rem;
+  top: calc((100vh - 12rem)/2);
+  right: 5rem;
+  /* background-color: aqua; */
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.action-btns-container > * {
+  width: 100%;
+  height: 5rem;
+  border-radius: 50%;
+  border: 3px solid white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record-btn{
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background-color: red;
+}
+.capture-btn{
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background-color:white;
+}
+.timer-container{
+  position: absolute;
+  bottom:7rem;
+  left:6rem;
+}
+.timer{
+  color: green;
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Handling Animations in action buttons */
+.scale-capture{
+  animation-name: scale-capture;
+  animation-iteration-count: 1;
+  animation-duration: .4s;
+  animation-timing-function:ease;
+}
+
+@keyframes scale-capture {
+  0% {
+    transform: scale(2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.scale-record{
+  animation-name: scale-record;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-timing-function:ease;
+}
+@keyframes scale-record {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100%{
+    transform: scale(1.2);
+  }
+}
