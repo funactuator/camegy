@@ -18,14 +18,41 @@ video{
 
 .filter-container{
   position: absolute;
-  width: 10rem;
+  width: 6rem;
   height: 20rem;
   top: calc((100vh - 20rem)/2);
   left: 5rem;
   background-color: aquamarine;
   border-radius: 3px;
+  z-index: 2;
 }
-
+.filter{
+  height: 5rem;
+  background-image: url(https://picsum.photos/seed/picsum/200/300);
+  background-position: center;
+  background-repeat: none;
+  background-size: 100% 100%;
+  background-blend-mode: color-burn;
+}
+.orange{
+  background-color: rgba(247, 157, 40, 0.267);
+}
+.green{
+  background-color: rgba(128, 255, 0, 0.336);
+}
+.pink{
+  background-color: rgba(240, 34, 178, 0.349);
+}
+.transparent{
+  background-color: transparent;
+}
+.filter-layer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
 .action-btns-container {
   position: absolute;
   width: 5rem;
@@ -38,6 +65,7 @@ video{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 .action-btns-container > * {
   width: 100%;

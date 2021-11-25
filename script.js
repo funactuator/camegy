@@ -4,9 +4,13 @@ const recordBtn = document.querySelector(".record-btn");
 const captureBtnContainer = document.querySelector(".capture-btn-container");
 const captureBtn = document.querySelector(".capture-btn");
 const timerELt = document.querySelector(".timer");
+const filterLayer = document.querySelector(".filter-layer");
+const filters = document.querySelectorAll(".filter");
+let filterColor = "transparent";
+
 const constraints = {
-  // audio:true,
-  // video:true
+  audio:true,
+  video:true
 };
 let chunks = [];
 let recorder;
@@ -30,11 +34,8 @@ navigator.mediaDevices.getUserMedia(constraints)
     let blob = new Blob(chunks, {'type':'video/mp4'});
     chunks = [];
     let videoURL = URL.createObjectURL(blob);
-    console.log(videoURL);
-    let anchor = document.createElement("a");
-    anchor.href = videoURL;
-    anchor.download = "stream.mp4";
-    anchor.click();
+    // console.log(videoURL);
+    autoDownload(videoURL, "video");
   });
 }).catch((err)=>{
   // alert("error in permissions!");
@@ -61,7 +62,18 @@ recordBtnContainer.addEventListener("click", (e) => {
 });
 
 
+captureBtnContainer.addEventListener("click", (e) =>{
+  const canvas = document.createElement("canvas");
+  canvas.height = videoElt.videoHeight;
+  canvas.width = videoElt.videoWidth;
+  const tool = canvas.getContext('2d');
 
+  tool.drawImage(videoElt, 0, 0, canvas.width, canvas.height);
+  tool.fillStyle = filterColor;
+  tool.fillRect(0,0,canvas.width, canvas.height);
+  let imageURL = canvas.toDataURL('image/jpeg', 1.0);
+  autoDownload(imageURL, "image");
+})
 
 
 
@@ -92,8 +104,34 @@ function convertSecondsToTime(seconds){
   time.seconds = seconds;
 
   // convert to suitable format of 00:00:00
-  time.hours = time.hours > 10? time.hours : `0${time.hours}`; 
-  time.minutes = time.minutes > 10? time.minutes : `0${time.minutes}`;
-  time.seconds = time.seconds > 10? time.seconds : `0${time.seconds}`;
+  time.hours = time.hours >= 10? time.hours : `0${time.hours}`; 
+  time.minutes = time.minutes >= 10? time.minutes : `0${time.minutes}`;
+  time.seconds = time.seconds >= 10? time.seconds : `0${time.seconds}`;
   return time;
 }
+
+function autoDownload(url, type){
+  let downloadFileName = '';
+  if(type === "image"){
+    downloadFileName = 'image.jpeg';
+  }else{
+    downloadFileName = 'stream.mp4';
+  }
+  let anchor = document.createElement("a");
+  anchor.href = url
+  anchor.download = downloadFileName;
+  anchor.click();
+}
+
+// handling filters
+filters.forEach((filterElt) =>{
+  filterElt.addEventListener("click", (e) => {
+    //get filter color
+    // set filter layer -- for our visibility that filter is being applied, nothing to do with actual filter
+    // set color para for canvas to apply 
+    // filter in canvas image
+    filterColor = getComputedStyle(filterElt).backgroundColor;
+    console.log(filterColor);
+    filterLayer.style.backgroundColor = filterColor;
+  });
+});

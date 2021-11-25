@@ -7,7 +7,7 @@
 
 
 [#] Tasks to do
-
+    [$$]Day 1 at work
 [1] create basic HTML  Structure ✅ 15:20  22 nov 2021
 [2] handle stream to screen through video ✅ 15:30 22 nov 2021
 [3] make action buttons UI       ✅ 15:50 22 nov 2021
@@ -15,4 +15,6 @@
 [5]Record video functionality     ✅ 22:41 22 nov 2021
 [6]timer functionality  ✅ 23:10 22 nov 2011
 
-[7]camera capture 
+    [$$]Day 2 at work
+[7]camera capture 20:55 25 nov 2021
+[8] filter application on image capturing 22:30 25 nov 2021
