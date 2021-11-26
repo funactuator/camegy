@@ -25,3 +25,7 @@
 [10]setting up gallery page         ✅ 26 nov 2021 18:12 
   [a]create page for gallery and add back forth b/w index and gallery
   [b]structure gallery page
+[11]retrieve                        ✅ 21:48 26 nov 2021
+[12]downlaod                        ✅ 21:48 26 nov 2021
+[13]delete feature                  ✅ 22:26 26 nov 2021
+[14]some finishing ui touches

@@ -48,7 +48,7 @@ body{
   width:100%;
   background-color: antiquewhite;
 }
-video{
+video,img{
   height:100%;
   width:100%;
   object-fit:cover;
@@ -68,10 +68,13 @@ video{
   background-color: #7054fa3f;
   
 }
+.action-btn-container > *:hover{
+  cursor: pointer;
+}
 .download{
   border-right: 1px solid rgb(253, 253, 253);
 }
 .download > *, .delete > *{
   font-size: 2rem ;
-  color: rgba(156, 236, 167, 0.774);
+  color: rgba(2, 3, 2, 0.774);
 }

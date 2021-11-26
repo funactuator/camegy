@@ -9,8 +9,8 @@ const filters = document.querySelectorAll(".filter");
 let filterColor = "transparent";
 
 const constraints = {
-  // audio:true,
-  // video:true
+  audio:true,
+  video:true
 };
 let chunks = [];
 let recorder;
@@ -39,7 +39,7 @@ navigator.mediaDevices.getUserMedia(constraints)
     // add to database
     let dbTransaction = db.transaction("video","readwrite");
     let videoStore = dbTransaction.objectStore("video");
-    let key = shortid();
+    let key = `vid${shortid()}`;
     let videoEntry = {
       id:key,
       blob:blob
@@ -85,7 +85,7 @@ captureBtnContainer.addEventListener("click", (e) =>{
   // autoDownload(imageURL, "image");
   let dbTransaction = db.transaction("images", "readwrite");
   let imageStore = dbTransaction.objectStore("images");
-  let key = shortid();
+  let key = `img${shortid()}`;
   let imageEntry = {
     id:key,
     url:imageURL
