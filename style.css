@@ -98,11 +98,17 @@ video{
   display: none;
 }
 
-
-
-
-
-
+.gallery-btn-container{
+  position: absolute;
+  bottom : 8rem;
+  right: 6rem;
+  
+  /* background-color: aliceblue; */
+}
+.gallery-btn{
+  color: white;
+  font-size: 3.5rem;
+}
 
 
 

@@ -9,8 +9,8 @@ const filters = document.querySelectorAll(".filter");
 let filterColor = "transparent";
 
 const constraints = {
-  audio:true,
-  video:true
+  // audio:true,
+  // video:true
 };
 let chunks = [];
 let recorder;
@@ -35,7 +35,16 @@ navigator.mediaDevices.getUserMedia(constraints)
     chunks = [];
     let videoURL = URL.createObjectURL(blob);
     // console.log(videoURL);
-    autoDownload(videoURL, "video");
+    // autoDownload(videoURL, "video");
+    // add to database
+    let dbTransaction = db.transaction("video","readwrite");
+    let videoStore = dbTransaction.objectStore("video");
+    let key = shortid();
+    let videoEntry = {
+      id:key,
+      blob:blob
+    }
+    videoStore.add(videoEntry);
   });
 }).catch((err)=>{
   // alert("error in permissions!");
@@ -63,6 +72,7 @@ recordBtnContainer.addEventListener("click", (e) => {
 
 
 captureBtnContainer.addEventListener("click", (e) =>{
+  captureBtn.classList.add("scale-capture");
   const canvas = document.createElement("canvas");
   canvas.height = videoElt.videoHeight;
   canvas.width = videoElt.videoWidth;
@@ -72,7 +82,18 @@ captureBtnContainer.addEventListener("click", (e) =>{
   tool.fillStyle = filterColor;
   tool.fillRect(0,0,canvas.width, canvas.height);
   let imageURL = canvas.toDataURL('image/jpeg', 1.0);
-  autoDownload(imageURL, "image");
+  // autoDownload(imageURL, "image");
+  let dbTransaction = db.transaction("images", "readwrite");
+  let imageStore = dbTransaction.objectStore("images");
+  let key = shortid();
+  let imageEntry = {
+    id:key,
+    url:imageURL
+  }
+  imageStore.add(imageEntry);
+  setTimeout(() => {
+    captureBtn.classList.remove("scale-capture");
+  },2000);
 })
 
 

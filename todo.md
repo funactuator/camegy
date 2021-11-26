@@ -18,3 +18,10 @@
     [$$]Day 2 at work
 [7]camera capture 20:55 25 nov 2021
 [8] filter application on image capturing 22:30 25 nov 2021
+[9] setting up db
+  [a]open db
+  [b]create object store
+  [c]make transactions
+[10]setting up gallery page         ✅ 26 nov 2021 18:12 
+  [a]create page for gallery and add back forth b/w index and gallery
+  [b]structure gallery page
