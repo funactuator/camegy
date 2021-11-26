@@ -34,6 +34,9 @@ video{
   background-size: 100% 100%;
   background-blend-mode: color-burn;
 }
+.filter:hover{
+  cursor: pointer;
+}
 .orange{
   background-color: rgba(247, 157, 40, 0.267);
 }
@@ -76,6 +79,9 @@ video{
   justify-content: center;
   align-items: center;
 }
+.action-btns-container > *:hover{
+  cursor: pointer;
+}
 .record-btn{
   width: 60%;
   height: 60%;
@@ -91,7 +97,7 @@ video{
 .timer-container{
   position: absolute;
   bottom:7rem;
-  left:6rem;
+  left:4.5rem;
 }
 .timer{
   color: green;
@@ -102,6 +108,7 @@ video{
   position: absolute;
   bottom : 8rem;
   right: 6rem;
+  z-index: 2;
   
   /* background-color: aliceblue; */
 }
